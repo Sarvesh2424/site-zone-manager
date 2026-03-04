@@ -29,7 +29,7 @@ const BuildingCard = memo(({ building, dispatch, removeBuilding }) => {
               setAddingNote(true);
               noteRef.current.focus();
             }}
-            className="bg-yellow-500 p-1.5 rounded-lg disabled:bg-gray-400 hover:cursor-pointer disabled:cursor-not-allowed hover:bg-yellow-500 transition-colors"
+            className="bg-yellow-400 p-1.5 rounded-lg disabled:bg-gray-400 hover:cursor-pointer disabled:cursor-not-allowed hover:bg-yellow-500 transition-colors"
           >
             Add note
           </button>

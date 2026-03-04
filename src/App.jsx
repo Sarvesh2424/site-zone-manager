@@ -12,8 +12,6 @@ import modeContext from "./contexts/ModeContext";
 import BuildingCard from "./components/BuildingCard";
 import NewBuildingForm from "./components/NewBuildingForm";
 
-
-
 const reducer = (state, action) => {
   switch (action.type) {
     case "SET_BUILDINGS":
@@ -90,7 +88,6 @@ function App() {
   const [mode, setMode] = useState("view");
   const [loading, setLoading] = useState(false);
   const [adding, setAdding] = useState(false);
-
   const [buildings, dispatch] = useReducer(reducer, []);
   const [searchQuery, setSearchQuery] = useState("");
 
