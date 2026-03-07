@@ -1,17 +1,13 @@
 import { X } from "lucide-react";
 import { memo, useReducer } from "react";
+import { Buildingreducer } from "../reducers/BuildingsReducer";
+import React from "react";
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "SET_NAME":
-      return { ...state, name: action.name };
-    case "SET_ZONE":
-      return { ...state, zone: action.zone };
-  }
-};
-
-const NewBuildingForm = memo(({ adding, setAdding, addBuilding }) => {
-  const [formState, dispatch] = useReducer(reducer, { name: "", zone: "" });
+const NewBuildingForm = ({ adding, setAdding, addBuilding }) => {
+  const [formState, dispatch] = useReducer(Buildingreducer, {
+    name: "",
+    zone: "",
+  });
   return (
     <div
       className={`fixed top-0 right-0 h-full bg-white w-1/5 shadow-2xl rounded-l-4xl z-20 p-8 duration-300 ease-out
@@ -50,6 +46,6 @@ const NewBuildingForm = memo(({ adding, setAdding, addBuilding }) => {
       </div>
     </div>
   );
-});
+};
 
-export default NewBuildingForm;
+export default React.memo(NewBuildingForm);

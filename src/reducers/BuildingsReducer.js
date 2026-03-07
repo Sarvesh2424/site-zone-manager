@@ -1,6 +1,7 @@
 import { v4 } from "uuid";
 
-const reducer = (state, action) => {
+export const reducer = (state, action) => {
+  console.log("✅ Reducer A");
   switch (action.type) {
     case "SET_BUILDINGS":
       const data = action.buildings;
@@ -68,7 +69,32 @@ const reducer = (state, action) => {
       );
       localStorage.setItem("data", JSON.stringify(dataAfterExitRemoval));
       return dataAfterExitRemoval;
+    default:
+      return state;
   }
 };
 
-export default reducer;
+export const Buildingreducer = (state, action) => {
+  console.log("✅ Reducer B");
+  console.log("Reducer B");
+  switch (action.type) {
+    case "SET_NAME":
+      return { ...state, name: action.name };
+    case "SET_ZONE":
+      return { ...state, zone: action.zone };
+    default:
+      return state;
+  }
+};
+
+export const IndividualBuildingreducer = (state, action) => {
+  console.log("✅ Reducer C");
+  switch (action.type) {
+    case "SET_GATE":
+      return { ...state, gate: action.gate };
+    case "SET_EXIT":
+      return { ...state, exit: action.exit };
+    default:
+      return state;
+  }
+};
