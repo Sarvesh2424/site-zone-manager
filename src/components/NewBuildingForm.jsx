@@ -1,5 +1,5 @@
 import { X } from "lucide-react";
-import { useReducer } from "react";
+import { memo, useReducer } from "react";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -10,11 +10,11 @@ const reducer = (state, action) => {
   }
 };
 
-function NewBuildingForm({ adding, setAdding, mainDispatch }) {
+const NewBuildingForm = memo(({ adding, setAdding, addBuilding }) => {
   const [formState, dispatch] = useReducer(reducer, { name: "", zone: "" });
   return (
     <div
-      className={`fixed top-0 right-0 h-full bg-white w-1/5 shadow-2xl rounded-l-4xl z-2 p-8 duration-300 ease-out
+      className={`fixed top-0 right-0 h-full bg-white w-1/5 shadow-2xl rounded-l-4xl z-20 p-8 duration-300 ease-out
         ${adding ? "translate-x-0" : "translate-x-full"}`}
     >
       <button onClick={() => setAdding(false)} className="hover:cursor-pointer">
@@ -40,11 +40,7 @@ function NewBuildingForm({ adding, setAdding, mainDispatch }) {
         <button
           onClick={(e) => {
             e.preventDefault();
-            mainDispatch({
-              type: "ADD_BUILDING",
-              name: formState.name,
-              zone: formState.zone,
-            });
+            addBuilding(formState.name, formState.zone);
             setAdding(false);
           }}
           className="p-2 rounded-lg bg-green-500 text-white mt-12 hover:cursor-pointer hover:bg-green-600 transition-colors"
@@ -54,6 +50,6 @@ function NewBuildingForm({ adding, setAdding, mainDispatch }) {
       </div>
     </div>
   );
-}
+});
 
 export default NewBuildingForm;
