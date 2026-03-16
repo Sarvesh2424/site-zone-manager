@@ -6,7 +6,12 @@ on:
             - "master"
 
 jobs:
+    print-job-1:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Job -1"
     print-job:
+        needs:
         runs-on: ubuntu-latest
         steps:
             - run: echo "Hello world"
